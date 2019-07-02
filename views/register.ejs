@@ -12,19 +12,28 @@
         <div class="app__header">
             <h1>Регистрация нового пользователя</h1>
         </div>
-        <form action="/register/new" method="POST" class="login-form">
+        <form action="/register/new" method="POST" class="login-form" name="registerForm">
             <div class="input">
-                <label for="login_name">Имя пользователя</label>
-                <input type="text" class="login-form__input" id="login_name" name="register_name" placeholder="имя пользователя">
-
-                <label for="login_email">E-mail</label>
-                <input type="email" class="login-form__input" id="login_email" placeholder="email" name="register_email">
+                <div class="form-control">
+                    <label for="login_name">Имя пользователя</label>
+                    <input type="text" class="login-form__input" id="login_name" name="register_name" placeholder="имя пользователя">
+                </div>
                 
-                <label for="login_password">Пароль</label>
-                <input type="password" class="login-form__input" id="login_password" name="register_password" placeholder="пароль">
-
-                <label for="login_password_confirm">Пароль</label>
-                <input type="password" class="login-form__input" id="login_password_confirm" name="register_password_confirm" placeholder="пароль">
+                <div class="form-control">
+                    <label for="login_email">E-mail</label>
+                    <input type="email" class="login-form__input" id="login_email" placeholder="email" name="register_email">
+                </div>
+                
+                <div class="form-control">
+                    <label for="login_password">Пароль</label>
+                    <input type="password" class="login-form__input" id="login_password" name="register_password" placeholder="пароль">
+                </div>
+                
+                <div class="form-control">
+                    <label for="login_password_confirm">Повоторите пароль</label>
+                    <input type="password" class="login-form__input" id="login_password_confirm" name="register_password_confirm" placeholder="пароль">
+                </div>
+                
 
             </div>
             <div class="btns">
@@ -34,7 +43,8 @@
         </form>
     </div>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
-    <script src=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>

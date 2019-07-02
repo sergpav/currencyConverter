@@ -94,3 +94,18 @@ body {
     box-shadow: 0 6px 16px 0 rgba(0,0,0,.2);
     transform: translateY(-1px);
 }
+
+.form-control {
+    position: relative;
+}
+
+input.error {
+    border-color: #BD3F32!important;
+}
+label.error {
+    color: #BD3F32;
+    position: absolute;
+    width: 182px;
+    top: 40%;
+    left: 235px;
+}

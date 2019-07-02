@@ -14,11 +14,16 @@
         </div>
         <form action="/login" method="POST" class="login-form">
             <div class="input">
-                <label for="login_name">Имя пользователя</label>
-                <input type="text" class="login-form__input" id="login_name" name="login_name" placeholder="имя пользователя">
+                <div class="form-control">
+                    <label for="login_name">Имя пользователя</label>
+                    <input type="text" class="login-form__input" id="login_name" name="register_name" placeholder="имя пользователя">
+                </div>
                 
-                <label for="login_password">Пароль</label>
-                <input type="password" class="login-form__input" id="login_password" name="login_password" placeholder="пароль">
+                <div class="form-control">
+                    <label for="login_password">Пароль</label>
+                    <input type="password" class="login-form__input" id="login_password" name="register_password" placeholder="пароль">
+                </div>
+                
             </div>
             <div class="btns">
                 <button type="submit" class="btn">Вход</button>
@@ -26,5 +31,9 @@
             </div>
         </form>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
