@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="content">
+        <div class="app__header">
+            <h1>Регистрация нового пользователя</h1>
+        </div>
+        <form action="/register/new" method="POST" class="login-form">
+            <div class="input">
+                <label for="login_name">Имя пользователя</label>
+                <input type="text" class="login-form__input" id="login_name" name="register_name" placeholder="имя пользователя">
+
+                <label for="login_email">E-mail</label>
+                <input type="email" class="login-form__input" id="login_email" placeholder="email" name="register_email">
+                
+                <label for="login_password">Пароль</label>
+                <input type="password" class="login-form__input" id="login_password" name="register_password" placeholder="пароль">
+
+                <label for="login_password_confirm">Пароль</label>
+                <input type="password" class="login-form__input" id="login_password_confirm" name="register_password_confirm" placeholder="пароль">
+
+            </div>
+            <div class="btns">
+                <button type="submit" class="btn">Вход</button>
+                <a href="/">Авторизация</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+    <script src=""></script>
+</body>
+</html>

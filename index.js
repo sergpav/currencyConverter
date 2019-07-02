@@ -10,6 +10,10 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
+app.get('/register', function(req, res) {
+    res.render('register');
+});
+
 app.get('/currency', async function (req, res) {
     var data = currencyRequest();
     //console.log(data);

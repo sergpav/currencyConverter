@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>hello</h1>
+    <div class="content">
+        <div class="app__header">
+            <h1>Вход</h1>
+        </div>
+        <form action="/login" method="POST" class="login-form">
+            <div class="input">
+                <label for="login_name">Имя пользователя</label>
+                <input type="text" class="login-form__input" id="login_name" name="login_name" placeholder="имя пользователя">
+                
+                <label for="login_password">Пароль</label>
+                <input type="password" class="login-form__input" id="login_password" name="login_password" placeholder="пароль">
+            </div>
+            <div class="btns">
+                <button type="submit" class="btn">Вход</button>
+                <a href="/register">Регистрация</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
