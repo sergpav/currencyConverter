@@ -7,29 +7,35 @@ module.exports = async function() {
         uri: originalTansaction,
         json: true
     };
+    
 
-    const rates = 'https://api.exchangeratesapi.io/latest';
+    let transaction = await(rp(options));
+    
+    let operationDate = new Date(transaction.createdAt);
+    let operationDateFormat = (operationDate.getFullYear()+"-"+(operationDate.getMonth()+1)+"-"+(operationDate.getDate()));
+
+    const rates = 'https://api.exchangeratesapi.io/'+operationDateFormat;
 
     var opt = {
         uri: rates,
         json: true,
     };
 
-    let transaction = await(rp(options));
+    delete transaction.exchangeUrl;
     let amount = transaction.amount;
     let currency = transaction.currency;
     let curRates = await(rp(opt));
-    transaction.convertedAmount = convertedAmount();
+    transaction.convertedAmount = parseFloat(convertedAmount());
     
     function convertedAmount(){
         let result = (amount / curRates.rates[currency]);
-        if(result % 1 !== 0) {
+        if (result % 1 !== 0) {
             return +result.toFixed(4);
         }
-        
     }
 
-    console.log(transaction);
+    transaction = {"transactions": [transaction]};
 
+    return transaction;
     
 };

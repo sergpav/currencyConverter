@@ -4,7 +4,8 @@
   "description": "this application is a test task for a CubeX company to apply trainee dev position",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js",
+    "prod": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,8 @@
   "dependencies": {
     "ejs": "^2.6.2",
     "express": "^4.17.1",
+    "mongoose": "^5.6.2",
+    "passport": "^0.4.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "validator": "^11.0.0"
