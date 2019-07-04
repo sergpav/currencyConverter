@@ -10,11 +10,11 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
-   
-const url = "mongodb://localhost:27017/";
+
+//const url = "mongodb://localhost:27017/";
 //const mongoClient = new MongoClient(url, { useNewUrlParser: true });
 
-//mongoose.connect("mongodb://127.0.0.1:27017/", {useNewUrlParser: true});
+mongoose.connect("mongodb://127.0.0.1:27017/converter",{ useNewUrlParser: true });
 
 // mongoClient.connect(function(err, client){
       
