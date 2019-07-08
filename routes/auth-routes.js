@@ -28,26 +28,27 @@ router.get('/logout', function(req,res) {
 //auth user and pass
 router.post('/login', function(req,res) {
     let {register_name, register_password} = req.body;
-    User.findOne({'username' : register_name, 'password' : register_password}, function(err, person) {
+    User.findOne({'username' : register_name}, function(err, person) {
         if(!person) {
             res.render('login', {message: 'Неправильное имя пользователя или пароль'});
-        } else {
+        }
+        person.comparePassword(register_password, function (err, isMath){
+            if (err) throw err;
             let sess = req.session;
             sess.user_id = person._id;
             res.redirect('/currency');
-        }
+        });
     });
 });
 
 //save user
 router.post('/register/new', function(req, res) {
     let {register_name, register_email, register_password,register_password_confirm } = req.body;
-    if(register_name.trim().length >=6 && validator.isEmail(register_email) && register_password.trim().length >= 6 && register_password_confirm.trim() >= 6 && register_password == register_password_confirm) {
+    if(register_password.trim().length >= 6 && register_password_confirm.trim() >= 6 && register_password == register_password_confirm) {
         let user = new User({
             username: register_name,
             email: register_email,
             password: register_password,
-            createdAt: new Date()
         });
         user.save((function(err, person) {
             if(err) {
@@ -62,7 +63,6 @@ router.post('/register/new', function(req, res) {
             else {
                 let sess=req.session;
                 sess.user_id = person._id;
-                console.log(sess);
                 res.redirect('/currency');
             }
         }));
@@ -85,7 +85,7 @@ router.get('/currency', async function (req, res) {
                 console.log(body);
             }
         });
-        res.render('index');
+        res.render('currency', {data: JSON.stringify(data)});
     }
     res.render('login', {message:'Авторизируйтесь для доступа к данной странице'});
 });

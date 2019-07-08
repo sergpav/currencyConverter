@@ -25,8 +25,11 @@ app.use(authRouts);
 
 
 app.get('/', function(req, res) {
-    console.log(req.session);
-    res.render('index');
+    let user = false;
+    if (req.session.user_id) {
+        user = true;
+    }
+    res.render('index', {'user' : user});
 });
 
    

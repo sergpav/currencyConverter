@@ -18,9 +18,11 @@
         <ul>
             <li><a href="/register">Регистрация</a></li>
         </ul>
+        <% if (user) { %>
         <ul>
             <li><a href="/logout">Выход</a></li>
         </ul>
+        <% } %>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
