@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="content">
+        <div class="app__header">
+            <h1>Вход</h1>
+            <% if (message) { %>
+                <div class="error"><%=message%></div>
+            <% } %> 
+        </div>
+        <form action="/login" method="POST" class="login-form">
+            <div class="input">
+                <div class="form-control">
+                    <label for="login_name">Имя пользователя</label>
+                    <input type="text" class="login-form__input" id="login_name" name="register_name" placeholder="имя пользователя">
+                </div>
+                
+                <div class="form-control">
+                    <label for="login_password">Пароль</label>
+                    <input type="password" class="login-form__input" id="login_password" name="register_password" placeholder="пароль">
+                </div>
+                
+            </div>
+            <div class="btns">
+                <button type="submit" class="btn">Вход</button>
+                <a href="/register">Регистрация</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>

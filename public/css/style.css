@@ -109,3 +109,16 @@ label.error {
     top: 40%;
     left: 235px;
 }
+.error {
+    color: #BD3F32;
+}
+body div.nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+ul{
+    list-style-type: none;
+}
+
