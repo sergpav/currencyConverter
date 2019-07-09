@@ -8,12 +8,33 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    <div class="nav">
+        <ul>
+            <li><a href="/">Главная</a></li>
+        </ul>
+        <% if(!auth) { %>
+        <ul>
+            <li><a href="/login">Авторизация</a></li>
+        </ul>
+        <ul>
+            <li><a href="/register">Регистрация</a></li>
+        </ul>   
+        <% } %>
+        <% if(auth) { %>
+        <ul>
+            <li><a href="/currency">Курс валюты</a></li>
+        </ul>
+        <ul>
+            <li><a href="/logout">Выход</a></li>
+        </ul>
+        <% } %>
+    </div>
     <div class="content">
         <div class="app__header">
             <h1>Вход</h1>
-            <% if (message) { %>
-                <div class="error"><%=message%></div>
-            <% } %> 
+            <% if(message) { %>
+                <p class="error"><%= message %></p>
+            <% } %>
         </div>
         <form action="/login" method="POST" class="login-form">
             <div class="input">

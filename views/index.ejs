@@ -12,13 +12,18 @@
         <ul>
             <li><a href="/">Главная</a></li>
         </ul>
+        <% if(!auth) { %>
         <ul>
             <li><a href="/login">Авторизация</a></li>
         </ul>
         <ul>
             <li><a href="/register">Регистрация</a></li>
+        </ul>   
+        <% } %>
+        <% if(auth) { %>
+        <ul>
+            <li><a href="/currency">Курс валюты</a></li>
         </ul>
-        <% if (user) { %>
         <ul>
             <li><a href="/logout">Выход</a></li>
         </ul>

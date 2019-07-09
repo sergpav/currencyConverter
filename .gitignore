@@ -1,5 +1,2 @@
 # Ignore folder named `node_modules`
 node_modules/
-
-# Ignore folder named `config` passport models
-config/
