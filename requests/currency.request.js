@@ -10,11 +10,11 @@ module.exports = async function() {
     }
     let trans = []; 
     for(let i = 0; i < 1; i++) {
-        const originalTansaction = 'https://7np770qqk5.execute-api.eu-west-1.amazonaws.com/prod/get-transaction';    
+        const originalTansaction = process.env.SERVICE_ENDPOIT;    
         let transaction = await(rp({uri: originalTansaction, json:true})); //get transaction
         let operationDate = new Date(transaction.createdAt); //get time of trasaction
         let operationDateFormat = (operationDate.getFullYear()+"-"+(operationDate.getMonth()+1)+"-"+(operationDate.getDate()));
-        const rates = 'https://api.exchangeratesapi.io/'+operationDateFormat; //get rates from api
+        const rates = process.env.RATES_URL+operationDateFormat; //get rates from api
         delete transaction.exchangeUrl;
         let amount = transaction.amount;
         let currency = transaction.currency;

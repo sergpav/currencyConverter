@@ -7,9 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <% if (data) { %>
-        <%= data.body %>
-        <%= data.data %>
+    <% if (response) { %>
+        <%= response %>
+    <% } %>
+    <br>
+    <% if (request) { %>
+        <%= request %>
     <% } %>
 </body>
 </html>

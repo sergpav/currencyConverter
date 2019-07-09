@@ -20,7 +20,6 @@ passport.use('local-signup', new LocalStrategy(
         passReqToCallback: true
     },
     function(req ,username, password, done) {
-        console.log(req.body)
         User.findOne({$or: [
             {'username': username},
             {'email': req.body.register_email}

@@ -26,8 +26,8 @@ router.post('/register/new', passport.authenticate('local-signup', {failureRedir
 });
 
 router.get('/currency', isAuth, function (req, res) {
-    process.transactions().then((data) => {
-        res.render('currency', {data: data});
+    process.transactions().then((date) => {
+        res.render('currency', {response: date.response, request: date.request});
     }).catch((err) => {
         res.render('login', {message: err});
     });
