@@ -14,10 +14,10 @@
         </ul>
         <% if(!auth) { %>
         <ul>
-            <li><a href="/login">Авторизация</a></li>
+            <li><a href="/user/login">Авторизация</a></li>
         </ul>
         <ul>
-            <li><a href="/register">Регистрация</a></li>
+            <li><a href="/user/register">Регистрация</a></li>
         </ul>   
         <% } %>
         <% if(auth) { %>
@@ -25,11 +25,17 @@
             <li><a href="/currency">Курс валюты</a></li>
         </ul>
         <ul>
-            <li><a href="/logout">Выход</a></li>
+            <li><a href="/user/logout">Выход</a></li>
         </ul>
         <% } %>
     </div>
-
+    
+    <% if(message.length) { %>
+        <div class="content">
+            <p><%= message %></p>
+        </div>
+    <% } %>
+            
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="/js/script.js"></script>

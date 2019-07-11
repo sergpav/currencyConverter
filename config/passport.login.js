@@ -2,12 +2,12 @@ const   passport = require('passport'),
         LocalStrategy = require('passport-local').Strategy,
         User = require('../models/users');
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
+passport.deserializeUser((id, done) => {
+    User.findById(id, (err, user) => {
         done(err, user);
     });
 });
@@ -18,8 +18,8 @@ passport.use('local-login', new LocalStrategy(
         passwordField: 'register_password',
         passReqToCallback : true
     },
-    function(req, username, password, done) {
-        User.findOne({ username: username }, function (err, user) {
+    (req, username, password, done) => {
+        User.findOne({ username: username }, (err, user) => {
             if (err) { 
                 return done(err); 
             }
@@ -31,7 +31,7 @@ passport.use('local-login', new LocalStrategy(
                 if (isMatch) {
                     return done(null, user);
                 } else {
-                    return done(null, false, { message: 'Incorrect password.' });
+                    return done(null, false, { message: 'Неверный пароль' });
                 }
             });
         });

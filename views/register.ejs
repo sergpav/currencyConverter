@@ -14,10 +14,10 @@
         </ul>
         <% if(!auth) { %>
         <ul>
-            <li><a href="/login">Авторизация</a></li>
+            <li><a href="/user/login">Авторизация</a></li>
         </ul>
         <ul>
-            <li><a href="/register">Регистрация</a></li>
+            <li><a href="/user/register">Регистрация</a></li>
         </ul>   
         <% } %>
         <% if(auth) { %>
@@ -25,7 +25,7 @@
             <li><a href="/currency">Курс валюты</a></li>
         </ul>
         <ul>
-            <li><a href="/logout">Выход</a></li>
+            <li><a href="/user/logout">Выход</a></li>
         </ul>
         <% } %>
     </div>
@@ -61,8 +61,7 @@
 
             </div>
             <div class="btns">
-                <button type="submit" class="btn">Вход</button>
-                <a href="/">Авторизация</a>
+                <button type="submit" class="btn">Регистрация</button>
             </div>
         </form>
     </div>

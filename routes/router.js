@@ -6,34 +6,36 @@ const   express = require('express'),
 
 //index page render
 router.get('/', (req, res) => {
-    res.render('index', {auth: req.isAuthenticated()});
+    res.render('index', {auth: req.isAuthenticated(), message: req.flash('error')});
 });
 // login page render
-router.get('/login', function(req,res) {
+router.get('/user/login', (req,res) => {
     res.render('login', {message: req.flash('error'), auth: req.isAuthenticated()});
 });
 //auth user
-router.post('/login', passport.authenticate('local-login', {failureRedirect : '/login', failureFlash: true}), function(req,res) {
-    res.redirect('/currecy');
+router.post('/login', passport.authenticate('local-login', {failureRedirect : '/user/login', failureFlash: true}), (req,res) => {
+    req.flash('error', 'Пользователь авторизирован');
+    res.redirect('/');
 });
-
-router.get('/register', function(req, res) {
+// registration page render
+router.get('/user/register', (req, res) => {
     res.render('register', {message: req.flash('error'), auth: req.isAuthenticated()});
 });
-
-router.post('/register/new', passport.authenticate('local-signup', {failureRedirect : '/register', failureFlash: true}), function(req, res) {
-    res.redirect('/currency');
+// save data from registration page
+router.post('/register/new', passport.authenticate('local-signup', {failureRedirect : '/user/register', failureFlash: true}), (req, res) => {
+    req.flash('error', 'Пользователь зарегистрирован');
+    res.redirect('/');
 });
-
-router.get('/currency', isAuth, function (req, res) {
+// get currency 
+router.get('/currency', isAuth, (req, res) => {
     process.transactions().then((date) => {
-        res.render('currency', {response: date.response, request: date.request});
+        res.render('currency', {response: date.response, request: date.request, auth: req.isAuthenticated()});
     }).catch((err) => {
         res.render('login', {message: err});
     });
 });
-
-router.get('/logout', function(req,res) {
+// logout user
+router.get('/user/logout', (req,res) => {
     req.logout();
     res.redirect('/');
 });

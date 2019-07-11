@@ -4,15 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Курсы</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <% if (response) { %>
-        <%= response %>
-    <% } %>
-    <br>
-    <% if (request) { %>
-        <%= request %>
-    <% } %>
+    <div class="nav">
+        <ul>
+            <li><a href="/">Главная</a></li>
+        </ul>
+        <% if(!auth) { %>
+        <ul>
+            <li><a href="/user/login">Авторизация</a></li>
+        </ul>
+        <ul>
+            <li><a href="/user/register">Регистрация</a></li>
+        </ul>   
+        <% } %>
+        <% if(auth) { %>
+        <ul>
+            <li><a href="/currency">Курс валюты</a></li>
+        </ul>
+        <ul>
+            <li><a href="/user/logout">Выход</a></li>
+        </ul>
+        <% } %>
+    </div>
+    <div class="content">
+        <% if (response) { %>
+            <h3><%= response %></h3>
+        <% } %>
+        <% if (request) { %>
+            <p><%= request %></p>
+        <% } %>
+    </div>
+    
 </body>
 </html>

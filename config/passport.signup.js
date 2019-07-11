@@ -1,13 +1,13 @@
-var passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
-    User = require('../models/users');
+const   passport = require('passport'),
+        LocalStrategy = require('passport-local').Strategy,
+        User = require('../models/users');
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
+passport.deserializeUser((id, done) => {
+    User.findById(id, (err, user) => {
         done(err, user);
     });
 });
@@ -19,7 +19,7 @@ passport.use('local-signup', new LocalStrategy(
         passwordField: 'register_password',
         passReqToCallback: true
     },
-    function(req ,username, password, done) {
+    (req ,username, password, done) => {
         User.findOne({$or: [
             {'username': username},
             {'email': req.body.register_email}
@@ -30,13 +30,13 @@ passport.use('local-signup', new LocalStrategy(
             if (user) {
                 if (user.email == req.body.register_email && user.username == username)
                 {
-                    return done(null, false, {'message': 'email and username already taken'});
+                    return done(null, false, {'message': 'Имя пользователя и email уже зарегистрированы'});
                 }
                 if (user.email == req.body.register_email) {
-                    return done(null, false, {'message': 'email is already taken'});
+                    return done(null, false, {'message': 'email уже зарегистрирован'});
                 }
                 if (user.username == username) {
-                    return done(null, false, {'message': 'username is already taken'});
+                    return done(null, false, {'message': 'Имя пользователя уже зарегистрировано'});
                 }
             }
             else {

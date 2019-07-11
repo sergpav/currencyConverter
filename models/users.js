@@ -1,8 +1,7 @@
-const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
-const validator = require('validator');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const   mongoose = require('mongoose'),
+        validator = require('validator'),
+        bcrypt = require('bcrypt'),
+        saltRounds = 10;
 
 let userSchema = mongoose.Schema({
     username: {
@@ -29,27 +28,23 @@ let userSchema = mongoose.Schema({
         default: Date.now
     }
 });
-// userSchema.plugin(uniqueValidator);
-// userSchema.methods.validPassword = function (pwd) {
-//     return (this.password === pwd);
-// };
 userSchema.pre('save', function(next) {
-    var user = this;
-    if(!user.isModified('password')) return next();
-
-    bcrypt.genSalt(saltRounds, function(err, salt) {
+    let user = this;
+    if(!user.isModified('password')) {
+        return next();
+    }
+    bcrypt.genSalt(saltRounds, (err, salt) => {
         if (err) return next (err);
 
-        bcrypt.hash(user.password, salt, function(err, hash) {
+        bcrypt.hash(user.password, salt, (err, hash) => {
             if (err) return next(err);
             user.password = hash;
             next();
         });
     });
 });
-
 userSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
         if(err) return createImageBitmap(err);
         cb(null, isMatch);
     });
