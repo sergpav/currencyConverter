@@ -2,7 +2,7 @@ const   express = require('express'),
         router = express.Router(),
         passport = require('passport'),
         isAuth = require('../app/authentication/middleware'),
-        process = require('../helpers/process');
+        promises = require('../helpers/functions/promises');
 
 //index page render
 router.get('/', (req, res) => {
@@ -28,10 +28,10 @@ router.post('/register/new', passport.authenticate('local-signup', {failureRedir
 });
 // get currency 
 router.get('/currency', isAuth, (req, res) => {
-    process.transactions().then((date) => {
-        res.render('currency', {response: date.response, request: date.request, auth: req.isAuthenticated()});
+    promises().then((data) => {
+        res.render('currency', {response: data.response, request:  data.request, auth: req.isAuthenticated()});
     }).catch((err) => {
-        res.render('login', {message: err});
+        res.render('login', {auth: req.isAuthenticated(), message:err});
     });
 });
 // logout user
